@@ -42,6 +42,29 @@ export const SearchInfoWrapper = styled.div`
   background: #fff;
   box-shadow: 0 0 8px rgba(0,0,0,.2);
 `
+export const SearchInfoTop = styled.div`
+  display: flex;
+  font-size: 14px;
+  color: #969696;
+  .title {
+    flex:1;
+  }
+`
+export const SearchInfoList = styled.div`
+  overflow: hidden;
+`
+export const SearchInfoItem = styled.a`
+  margin-right: 10px;
+  cousor:pointer;
+  display: block;
+  float: left;
+  line-height:150%;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #787878;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+`
 export const SearchWrapper = styled.div`
   width: 50%
   height: 38px;

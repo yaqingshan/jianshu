@@ -13,7 +13,10 @@ import {
   SearchInput,
   BtnWrapper,
   Btn,
-  SearchInfoWrapper
+  SearchInfoWrapper,
+  SearchInfoTop,
+  SearchInfoList,
+  SearchInfoItem
 } from './style.js'
 
 const Head =  (props) => {
@@ -43,7 +46,15 @@ const Head =  (props) => {
                 //搜索提示框
               }
               <SearchInfoWrapper>
-
+                <SearchInfoTop>
+                  <div className="title">热门搜索</div>
+                  <div>换一批</div>
+                </SearchInfoTop>
+                <SearchInfoList>
+                  <SearchInfoItem>嘻嘻嘻嘻嘻</SearchInfoItem>
+                  <SearchInfoItem>嘻嘻嘻嘻嘻</SearchInfoItem>
+                  <SearchInfoItem>嘻嘻嘻嘻嘻</SearchInfoItem>
+                </SearchInfoList>
               </SearchInfoWrapper>
             </NavSearch>
             <NavItem className="grey">
