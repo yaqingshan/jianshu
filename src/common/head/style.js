@@ -55,6 +55,7 @@ export const SearchInfoList = styled.div`
 `
 export const SearchInfoItem = styled.a`
   margin-right: 10px;
+  margin-bottom: 10px;
   cousor:pointer;
   display: block;
   float: left;
