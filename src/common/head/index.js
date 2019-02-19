@@ -66,21 +66,26 @@ class Head extends Component {
 
   // 聚焦显示搜索提示框信息，失焦不显示 传入 focused 参数
   getArea () {
-    const { focused, searchResultList } = this.props
-    if(focused) {
+    const { focused, currentPage, mouseIn, searchResultList, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props
+    //immutable对象不支持索引，需要转换一下
+    const newList = searchResultList.toJS();
+    const pageList = [];
+    for (let i = (currentPage-1) * 10; i < currentPage * 10; i++) {
+      pageList.push(<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>)
+    }
+    if(focused || mouseIn) {
       return (
-        <SearchInfoWrapper>
+        <SearchInfoWrapper
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <SearchInfoTop>
             <div className="title">热门搜索</div>
-            <div>换一批</div>
+            <div onClick={handleChangePage}>换一批</div>
           </SearchInfoTop>
           <SearchInfoList>
             {/*此处的searchResultList是一个immutable数组*/}
-            {
-              searchResultList.map((item)=>{
-                return <SearchInfoItem key={item}>{item}</SearchInfoItem>
-              })
-            }
+            { pageList }
           </SearchInfoList>
         </SearchInfoWrapper>
       )
@@ -98,20 +103,34 @@ const mapStateToProps = (state) => {
     //将state也转化成immutable对象后 需要使用get获取head
     //focused: state.get('head').get('focused')
     focused: state.getIn(['head', 'focused']),
-    searchResultList: state.getIn(['head', 'searchResultList'])
-
+    searchResultList: state.getIn(['head', 'searchResultList']),
+    mouseIn: state.getIn(['head', 'mouseIn']),
+    currentPage: state.getIn(['head', 'currentPage']),
+    totalPage: state.getIn(['head', 'totalPage'])
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     //聚焦事件
-    handleInputFocus(){
+    handleInputFocus() {
       dispatch(actionCreators.getSearchList())
       dispatch(actionCreators.searchFocus())
     },
     //失焦事件
-    handleInputBlur(){
+    handleInputBlur() {
       dispatch(actionCreators.searchBlur())
+    },
+    //鼠标移入事件
+    handleMouseEnter() {
+      dispatch(actionCreators.changeMouseEnter())
+    },
+    //鼠标移除事件
+    handleMouseLeave() {
+      dispatch(actionCreators.changeMouseLeave())
+    },
+    //改变page数
+    handleChangePage () {
+      dispatch(actionCreators.changePage())
     }
   }
 }

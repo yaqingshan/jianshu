@@ -6,7 +6,10 @@ import { fromJS } from 'immutable'
 //调用fromJS方法 转化为 immutable对象
 const defaultState = fromJS({
   focused: false,
-  searchResultList: []
+  searchResultList: [],
+  mouseIn: false,
+  currentPage:1,
+  totalPage:1
 })
 //优化前写法
 // export default (state = defaultState, action ) => {
@@ -38,7 +41,13 @@ export default (state = defaultState, action ) => {
     case actionTypes.SEARCH_BLUR:
       return state.set('focused', false);
     case actionTypes.GET_SEARCH_LIST:
-      return state.set('searchResultList', action.data);
+      return state.set('searchResultList', action.data).set('totalPage', action.totalPage);
+    case actionTypes.CHANGE_MOUSE_ENTER:
+      return state.set('mouseIn', true);
+    case actionTypes.CHANGE_MOUSE_LEAVE:
+      return state.set('mouseIn', false);
+    case actionTypes.CHANGE_PAGE:
+      return state.set('currentPage', 2);
     default:
       return state;
   }

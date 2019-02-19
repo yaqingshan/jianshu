@@ -5,7 +5,9 @@ import axios from 'axios'
 const searchList = (data) => ({
   type: actionTypes.GET_SEARCH_LIST,
   // 将数据改为immutable 对象
-  data: fromJS(data)
+  data: fromJS(data),
+  //将数据分页，算出总页数
+  totalPage: Math.ceil(data.length / 10)
 })
 
 export const searchFocus = () => ({
@@ -24,3 +26,12 @@ export const getSearchList = () => {
     })
   }
 }
+export const changeMouseEnter = () => ({
+  type: actionTypes.CHANGE_MOUSE_ENTER
+})
+export const changeMouseLeave = () => ({
+  type: actionTypes.CHANGE_MOUSE_LEAVE
+})
+export const changePage = () => ({
+  type: actionTypes.CHANGE_PAGE
+})
