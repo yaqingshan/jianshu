@@ -21,7 +21,7 @@ import {
 
 class Head extends Component {
   render () {
-    const { focused, handleInputFocus, handleInputBlur } = this.props
+    const { focused, handleInputFocus, handleInputBlur, searchResultList } = this.props
     return (
       <Fragment>
         <HeadWrapper>
@@ -38,7 +38,7 @@ class Head extends Component {
                 >
                   <SearchWrapper className={focused ? 'focused' : ''}>
                     <SearchInput
-                      onFocus={handleInputFocus}
+                      onFocus={() => handleInputFocus(searchResultList)}
                       onBlur={handleInputBlur}
                     />
                     <span className={focused ? 'iconfont focused' : 'iconfont'}>&#xe64d;</span>
@@ -66,12 +66,14 @@ class Head extends Component {
 
   // 聚焦显示搜索提示框信息，失焦不显示 传入 focused 参数
   getArea () {
-    const { focused, currentPage, mouseIn, searchResultList, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props
+    const { focused, currentPage, totalPage, mouseIn, searchResultList, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props
     //immutable对象不支持索引，需要转换一下
     const newList = searchResultList.toJS();
     const pageList = [];
     for (let i = (currentPage-1) * 10; i < currentPage * 10; i++) {
-      pageList.push(<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>)
+      if(newList[i]){
+        pageList.push(<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>)
+      }
     }
     if(focused || mouseIn) {
       return (
@@ -81,7 +83,9 @@ class Head extends Component {
         >
           <SearchInfoTop>
             <div className="title">热门搜索</div>
-            <div onClick={handleChangePage}>换一批</div>
+            <div className="refresh" onClick={()=> handleChangePage(currentPage, totalPage,this.refreshIcon)}>
+              <span ref={(icon) => {this.refreshIcon = icon}} className="iconfont">&#xe616;</span>换一批
+            </div>
           </SearchInfoTop>
           <SearchInfoList>
             {/*此处的searchResultList是一个immutable数组*/}
@@ -112,8 +116,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     //聚焦事件
-    handleInputFocus() {
-      dispatch(actionCreators.getSearchList())
+    handleInputFocus(searchResultList) {
+      //console.log(searchResultList)
+      // if(searchResultList.size === 0) {
+      //   dispatch(actionCreators.getSearchList())
+      // }
+      //简化写法
+      (searchResultList.size === 0) && dispatch(actionCreators.getSearchList())
       dispatch(actionCreators.searchFocus())
     },
     //失焦事件
@@ -129,8 +138,20 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actionCreators.changeMouseLeave())
     },
     //改变page数
-    handleChangePage () {
-      dispatch(actionCreators.changePage())
+    handleChangePage (currentPage, totalPage,Icon) {
+      let currentAngle = Icon.style.transform.replace(/[^0-9]/ig, '')
+      if(currentAngle) {
+        currentAngle = parseInt(currentAngle, 10) //取整
+      } else {
+        currentAngle = 0;
+      }
+      Icon.style.transform = 'rotate(' + (currentAngle + 360)+'deg)'
+      if(currentPage < totalPage) {
+        dispatch(actionCreators.changePage(currentPage+1))
+      } else {
+        dispatch(actionCreators.changePage(1))
+      }
+
     }
   }
 }

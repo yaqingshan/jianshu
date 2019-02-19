@@ -44,10 +44,20 @@ export const SearchInfoWrapper = styled.div`
 `
 export const SearchInfoTop = styled.div`
   display: flex;
+  cursor:pointer;
   font-size: 14px;
   color: #969696;
   .title {
     flex:1;
+  }
+  .refresh {
+    display: flex;
+    align-items: center;
+    .iconfont{
+      margin-right: 6px;
+      transition: all .4s ease-in;
+      transform-origin: 50%;
+    }
   }
 `
 export const SearchInfoList = styled.div`

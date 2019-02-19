@@ -41,13 +41,18 @@ export default (state = defaultState, action ) => {
     case actionTypes.SEARCH_BLUR:
       return state.set('focused', false);
     case actionTypes.GET_SEARCH_LIST:
-      return state.set('searchResultList', action.data).set('totalPage', action.totalPage);
+      //  优化写法
+      return state.merge({
+        searchResultList: action.data,
+        totalPage: action.totalPage
+      })
+      //return state.set('searchResultList', action.data).set('totalPage', action.totalPage);
     case actionTypes.CHANGE_MOUSE_ENTER:
       return state.set('mouseIn', true);
     case actionTypes.CHANGE_MOUSE_LEAVE:
       return state.set('mouseIn', false);
     case actionTypes.CHANGE_PAGE:
-      return state.set('currentPage', 2);
+      return state.set('currentPage', action.currentPage);
     default:
       return state;
   }
