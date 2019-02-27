@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { TopicWrapper, TopItem } from '../style.js'
 
 class Topic extends Component  {
   render() {
+    const { list } = this.props;
     return(
       <TopicWrapper>
-        <TopItem>
-          <img alt="社会热点" src="//upload-images.jianshu.io/upload_images/11995366-e8db462842a15a03?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" />
-          社会热点
-        </TopItem>
-        <TopItem>
-          <img alt="社会热点" src="//upload-images.jianshu.io/upload_images/11995366-e8db462842a15a03?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" />
-          社会热点
-        </TopItem>
-        <TopItem>
-          <img alt="社会热点" src="//upload-images.jianshu.io/upload_images/11995366-e8db462842a15a03?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" />
-          社会热点
-        </TopItem>
+        {
+          list.map((item)=>{
+            return (
+              <TopItem key={item.get('id')}>
+                <img alt={item.get('title')} src={item.get('url')} />
+                {item.get('title')}
+              </TopItem>
+            )
+          })
+        }
       </TopicWrapper>
     )
   }
 }
-
-export default Topic;
+const mapStateToProps = (state) => ({
+  list: state.getIn(['home','topList'])
+})
+export default connect(mapStateToProps,null)(Topic);
