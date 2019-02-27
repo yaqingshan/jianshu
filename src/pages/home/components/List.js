@@ -13,7 +13,7 @@ class List extends Component {
       {
         list.map((item)=>{
           return(
-            <ListItem>
+            <ListItem key={item.get('title')}>
               <div className="list-info">
                 <h4>{item.get('title')}</h4>
                 <p className="abstract">{item.get('abstract')}</p>

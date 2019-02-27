@@ -44,7 +44,33 @@ const defaultState = fromJS({
   },{
     id:6,
     url:'//cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png'
-  }]
+  }],
+  writerList:[{
+    id:1,
+    name:'须僧',
+    avatar:'//upload.jianshu.io/users/upload_avatars/3950651/acfaa0ce-42fe-424a-b7c8-9a0136fb96ec.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
+    desc:'写了396.8k字 · 8.6k喜欢'
+  },{
+    id:2,
+    name:'梅拾璎',
+    avatar:'//upload.jianshu.io/users/upload_avatars/3136195/484e32c3504a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
+    desc:'写了266.3k字 · 23.3k喜欢'
+  },{
+    id:3,
+    name:'简宝玉',
+    avatar:'//upload.jianshu.io/users/upload_avatars/3678149/b8a58e70-1126-48c9-97e2-8f21a31dfa94.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
+    desc:'写了83.4k字 · 38.7k喜欢'
+  },{
+    id:4,
+    name:'穿着prada挤地铁',
+    avatar:'//upload.jianshu.io/users/upload_avatars/2587459/0c7e061f-e78e-4b09-b511-340846c4ea0f.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
+    desc:'写了340.3k字 · 3.8k喜欢'
+  },{
+    id:5,
+    name:'偶遇科学',
+    avatar:'//upload.jianshu.io/users/upload_avatars/4802366/4f86b75d-b61b-4126-8be4-87a151c9cd28.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
+    desc:'写了299.5k字 · 1.8k喜欢'
+  },]
 })
 
 export default (state = defaultState, action) => {

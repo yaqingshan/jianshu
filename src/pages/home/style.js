@@ -94,15 +94,35 @@ export const RecommendItem =styled.div`
   background:url(${(props)=>props.imgurl});
   background-size:contain;
 `
-export const WriteWrapper = styled.div`
-
+export const WriterWrapper = styled.div`
+  margin-top: 20px;
 `
-export const WriteList = styled.div`
-
+export const WriterList = styled.div`
+  padding-top: 20px;
 `
-export const WriteItem = styled.div`
+export const WriterTop = styled.div`
+  display: flex;
+  cursor:pointer;
+  font-size: 14px;
+  color: #969696;
+  .title {
+    flex:1;
+  }
+  .refresh {
+    display: flex;
+    align-items: center;
+    .iconfont{
+      margin-right: 6px;
+      transition: all .4s ease-in;
+      transform-origin: 50%;
+    }
+  }
+`
+export const WriterItem = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
+  position: relative;
   .avatar{
     width: 48px;
     height: 48px;
@@ -114,5 +134,26 @@ export const WriteItem = styled.div`
       height: 100%;
     }
   }
-
+  .writer-info{
+    padding-left: 12px;
+    .name{
+      font-size: 14px;
+      color: #333;
+      line-height: 150%;
+    }
+    p {
+      padding-top: 6px;
+      font-size: 12px;
+      color: #969696;
+      line-height: 150%;
+    }
+  }
+  .tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: #42c02e;
+    position: absolute;
+    right: 0;
+    top: 8px;
+  }
 `

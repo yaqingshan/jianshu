@@ -1,30 +1,48 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
-  WriteWrapper,
-  WriteList,
-  WriteItem
+  WriterWrapper,
+  WriterTop,
+  WriterList,
+  WriterItem
 } from '../style.js'
 
 class Writer extends Component {
   render() {
+    const { list } = this.props;
     return(
-      <WriteWrapper>
-        <WriteList>
-          <WriteItem>
-            <div className="avatar">
-              <img url="https://upload.jianshu.io/users/upload_avatars/2558050/7761b285-2805-4534-9870-ba7dcc7538ec.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp" />
-            </div>
-            <div className="writer-info">
-              <div className="name">须僧</div>
-              <p>写了396.8k字 · 8.6k喜欢</p>
-            </div>
-            <div className="tag">+关注</div>
-          </WriteItem>
-        </WriteList>
-      </WriteWrapper>
+      <WriterWrapper>
+      <WriterTop>
+        <div className="title">推荐作者</div>
+        <div className="refresh">
+          <span className="iconfont">&#xe616;</span>换一批
+        </div>
+      </WriterTop>
+        <WriterList>
+          {
+            list.map((item) => {
+              return(
+                <WriterItem key={item.get('id')}>
+                  <div className="avatar">
+                    <img alt={item.get('id')} src={item.get('avatar')} />
+                  </div>
+                  <div className="writer-info">
+                    <div className="name">{item.get('name')}</div>
+                    <p>{item.get('desc')}</p>
+                  </div>
+                  <div className="tag">+关注</div>
+                </WriterItem>
+              )
+            })
+          }
+        </WriterList>
+      </WriterWrapper>
     )
   }
 }
 
-export default Writer;
+const mapStateToProps = (state) => ({
+  list: state.getIn(['home','writerList'])
+})
+
+export default connect(mapStateToProps)(Writer);
