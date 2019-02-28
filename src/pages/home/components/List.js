@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { actionCreators } from '../store'
 import {
   ListWrapper,
-  ListItem
+  ListItem,
+  LoadMore
 } from '../style.js'
 
 class List extends Component {
   render() {
-    const { list } = this.props;
+    const { list, getMoreList, page } = this.props;
     return (
       <ListWrapper>
       {
@@ -25,12 +27,19 @@ class List extends Component {
           )
         })
       }
+      <LoadMore onClick={() => getMoreList(page)}>阅读更多</LoadMore>
       </ListWrapper>
     )
   }
 }
 const mapStateToProps = (state) =>({
-  list: state.getIn(['home','articleList'])
+  list: state.getIn(['home','articleList']),
+  page: state.getIn(['home','articlePage'])
+})
+const mapdispatchToProps = (dispatch) => ({
+  getMoreList(page) {
+    dispatch(actionCreators.getMoreList(page))
+  }
 })
 
-export default connect(mapStateToProps,null)(List);
+export default connect(mapStateToProps,mapdispatchToProps)(List);

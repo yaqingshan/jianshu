@@ -84,6 +84,18 @@ export const ListItem = styled.div`
     }
   }
 `
+export const LoadMore = styled.div`
+  margin: 30px 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  background: #a5a5a5;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+`
 export const RecommendWrapper =styled.div`
   margin-top: -3px;
 `
@@ -156,4 +168,18 @@ export const WriterItem = styled.div`
     right: 0;
     top: 8px;
   }
+`
+export const BackTop = styled.div`
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid #dcdcdc;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  transition: .1s ease-in;
+  color: #333;
+  font-size: 14px;
+  line-height: 50px;
 `
