@@ -15,9 +15,9 @@ class App extends Component {
         <Fragment>
           <GlobalStyle/>
           <GlobalIconfont/>
-          <Head />
           <BrowserRouter>
             <div>
+              <Head />
               {/*exact 路径完全相同时才会出现对应内容*/}
               <Route path="/" exact component={Home}></Route>
               <Route path="/detail" exact component={Detail}></Route>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
 import List from './components/List.js'
@@ -12,7 +12,9 @@ import {
   BackTop
  } from './style.js'
 
-class Home extends Component {
+class Home extends PureComponent {
+  // PureComponent 纯组件 在底层运用了 shouldComponentUpdate 减少了每个组件中render函数不必要的执行
+  // PureComponent 需要与 immutable.js 结合使用
   handleBackTop() {
     window.scrollTo(0,0)
   }

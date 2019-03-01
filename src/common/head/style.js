@@ -2,7 +2,13 @@ import styled from 'styled-components'
 import logoImg from './../../statics/nav-logo.png'
 
 export const HeadWrapper = styled.div`
+  position: fixed;
+  left:0;
+  top:0;
+  right: 0;
+  z-index:99;
   height: 56px;
+  background: #ffffff;
   border-bottom: 1px solid #f0f0f0;
   display: flex;
   align-items: center

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import { actionCreators } from './store'
+import { Link } from 'react-router-dom'
 import {
   HeadWrapper,
   Logo,
@@ -25,7 +26,9 @@ class Head extends Component {
     return (
       <Fragment>
         <HeadWrapper>
-          <Logo/>
+          <Link to='/'>
+            <Logo/>
+          </Link>
           <NavContent>
             <NavWrapper>
               <NavItem className="orange">首页</NavItem>

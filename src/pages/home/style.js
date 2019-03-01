@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HomeWrapper = styled.div`
-  padding-top: 30px;
+  padding-top: 86px;
   width: 960px;
   margin: 0 auto;
   overflow: hidden;
@@ -53,6 +53,9 @@ export const TopItem = styled.div`
 export const ListWrapper = styled.div`
   margin-top: 20px;
   border-top:1px solid #f0f0f0;
+  a {
+    text-decoration: none;
+  }
 `
 export const ListItem = styled.div`
   display: flex;
@@ -62,10 +65,11 @@ export const ListItem = styled.div`
   .list-info {
     padding-right: 15px;
     flex: 1;
-    h2{
+    h4{
       font-size: 18px;
       font-weight: 700;
       line-height: 150%;
+      color: #333;
     }
     .abstract{
       padding-top: 10px;
