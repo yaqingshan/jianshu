@@ -13,9 +13,7 @@ export const HeadWrapper = styled.div`
   display: flex;
   align-items: center
 `
-export const Logo = styled.a.attrs({
-  href: '/'
-})`
+export const Logo = styled.div`
   display: block;
   width:100px;
   height: 56px;

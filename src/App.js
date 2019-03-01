@@ -20,7 +20,7 @@ class App extends Component {
               <Head />
               {/*exact 路径完全相同时才会出现对应内容*/}
               <Route path="/" exact component={Home}></Route>
-              <Route path="/detail" exact component={Detail}></Route>
+              <Route path="/detail/:id" exact component={Detail}></Route>
             </div>
           </BrowserRouter>
         </Fragment>
