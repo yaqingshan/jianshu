@@ -1,6 +1,8 @@
 import axios from 'axios'
 import * as actionTypes from './actionTypes'
 import { fromJS } from 'immutable'
+// 这个baseURL一般是为了在对接口进行proxy的时候使用，上线的时候其实很多时候并不需要进行配置
+axios.defaults.baseURL = window.location.origin
 const homeAction = (result) => ({
   type: actionTypes.CHANGE_HOME_DATA,
   topList: fromJS(result.topList),
@@ -40,7 +42,3 @@ export const toggleBackTop = (show) => ({
   type: actionTypes.TOGGLE_BACK_TOP,
   show
 })
-// export const toggleBackTop = (show) => ({
-//   type: actionTypes.TOGGLE_BACK_TOP,
-//   show
-// })
