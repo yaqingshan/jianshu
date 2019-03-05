@@ -9,7 +9,8 @@ import {
   HomeWrapper,
   HomeLeft,
   HomeRight,
-  BackTop
+  BackTop,
+  AdWrapper
  } from './style.js'
 
 class Home extends PureComponent {
@@ -30,6 +31,9 @@ class Home extends PureComponent {
         </HomeLeft>
         <HomeRight>
           <Recommend />
+          <AdWrapper>
+            <img alt="广告" src="https://oimagec7.ydstatic.com/image?id=5694929529991162265&product=adpublish&w=1280&h=720&sc=0&rm=2&gsb=0&gsbd=60" />
+          </AdWrapper>
           <Writer />
         </HomeRight>
         {

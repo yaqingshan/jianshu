@@ -1,15 +1,9 @@
 import axios from 'axios'
 import * as actionTypes from './actionTypes'
-import { fromJS } from 'immutable'
 
 const login = (val) =>({
   type: actionTypes.IS_LOGIN,
   val: true
-})
-
-export const getUserName = (name) => ({
-  type: actionTypes.GET_USER,
-  name: fromJS(name)
 })
 
 export const logout = (val) => ({

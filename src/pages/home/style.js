@@ -187,3 +187,15 @@ export const BackTop = styled.div`
   font-size: 14px;
   line-height: 50px;
 `
+export const AdWrapper = styled.div`
+  margin: 10px auto;
+  width:100%;
+  height: 160px;
+  border-radius: 4px;
+  overflow: hidden;
+  img{
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+`

@@ -12,20 +12,19 @@ import {
 
 class Login extends PureComponent {
   render () {
-    const { isLogin, getUserName } = this.props;
+    const { isLogin, login } = this.props;
     if(!isLogin) {
-      console.log(isLogin)
       return (
         <LoginWrapper>
           <div className="title">登录</div>
           <LoginInfo>
             <InputWrpper>
-              <span className="iconfont">&#xe636;</span>
-              <input type="text" value="1" onChange={getUserName(this.user)} ref={(input)=>{this.user = input}} placeholder="手机号或邮箱" />
+              <span className="iconfont">&#xe751;</span>
+              <input type="text" defaultValue="" ref={(input)=>{this.user = input}} placeholder="手机号或邮箱" />
             </InputWrpper>
             <InputWrpper>
-              <span className="iconfont">&#xe636;</span>
-              <input type="password" value="2" ref={(input) => {this.pwd = input}} placeholder="密码" />
+              <span className="iconfont">&#xe61e;</span>
+              <input type="password" defaultValue="" ref={(input) => {this.pwd = input}} placeholder="密码" />
             </InputWrpper>
           </LoginInfo>
           <LoginTips>
@@ -34,7 +33,7 @@ class Login extends PureComponent {
             </div>
             <span>登录遇到问题?</span>
           </LoginTips>
-          <LoginBtn onClick={()=> this.props.login(this.user,this.pwd)}>登录</LoginBtn>
+          <LoginBtn onClick={()=> login(this.user,this.pwd)}>登录</LoginBtn>
         </LoginWrapper>
       )
     } else {
@@ -50,9 +49,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   login(userElem, pwdElem) {
     dispatch(actionCreators.loginStatus(userElem.value,pwdElem.value))
-  },
-  getUserName(userElem) {
-    console.log(userElem)
   }
 })
 
