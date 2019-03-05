@@ -133,6 +133,7 @@ export const NavItem = styled.div`
   font-size: 16px
   color: #333;
   padding: 0 20px;
+  cursor: pointer;
   &.orange {
     color: #ea6f5a;
   }

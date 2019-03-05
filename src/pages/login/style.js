@@ -59,6 +59,7 @@ export const LoginBtn = styled.div`
   background:#3194d0;
   color: #ffffff;
   font-size: 18px;
+  cursor: pointer;
 `
 export const LoginTips = styled.div`
   width: 300px;

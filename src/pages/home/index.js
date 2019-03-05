@@ -52,7 +52,8 @@ class Home extends PureComponent {
   }
 }
 const mapStateToProps = (state) => ({
-  showBackTop: state.getIn(['home','showBackTop'])
+  showBackTop: state.getIn(['home','showBackTop']),
+  isLogin: state.getIn(['login','isLogin'])
 })
 const mapdispatchToProps = (dispatch) => ({
   changeHomeData() {
@@ -64,7 +65,6 @@ const mapdispatchToProps = (dispatch) => ({
     } else {
       dispatch(actionCreators.toggleBackTop(false))
     }
-
   }
 })
 

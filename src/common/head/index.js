@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import { actionCreators } from './store'
 import { Link } from 'react-router-dom'
+import { actionCreators as loginActionCreators} from '../../pages/login/store'
 import {
   HeadWrapper,
   Logo,
@@ -22,7 +23,7 @@ import {
 
 class Head extends Component {
   render () {
-    const { focused, handleInputFocus, handleInputBlur, searchResultList } = this.props
+    const { isLogin, logout, focused, handleInputFocus, handleInputBlur, searchResultList } = this.props
     return (
       <Fragment>
         <HeadWrapper>
@@ -55,7 +56,9 @@ class Head extends Component {
               <NavItem className="grey">
                 <span className="iconfont">&#xe636;</span>
               </NavItem>
-              <NavItem className="grey">登录</NavItem>
+              {
+                isLogin ? <NavItem className="grey" onClick={logout}>退出</NavItem> : <Link to='/login'><NavItem className="grey">登录</NavItem></Link>
+              }
             </NavWrapper>
           </NavContent>
           <BtnWrapper>
@@ -113,7 +116,8 @@ const mapStateToProps = (state) => {
     searchResultList: state.getIn(['head', 'searchResultList']),
     mouseIn: state.getIn(['head', 'mouseIn']),
     currentPage: state.getIn(['head', 'currentPage']),
-    totalPage: state.getIn(['head', 'totalPage'])
+    totalPage: state.getIn(['head', 'totalPage']),
+    isLogin: state.getIn(['login', 'isLogin'])
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -154,7 +158,9 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(actionCreators.changePage(1))
       }
-
+    },
+    logout() {
+      dispatch(loginActionCreators.logout())
     }
   }
 }
