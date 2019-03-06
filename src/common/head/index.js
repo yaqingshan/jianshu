@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { actionCreators as loginActionCreators} from '../../pages/login/store'
 import {
   HeadWrapper,
+  HeadWith,
   Logo,
   NavContent,
   NavWrapper,
@@ -27,44 +28,46 @@ class Head extends Component {
     return (
       <Fragment>
         <HeadWrapper>
-          <Link to='/'>
-            <Logo/>
-          </Link>
-          <NavContent>
-            <NavWrapper>
-              <NavItem className="orange">首页</NavItem>
-              <NavItem>下载APP</NavItem>
-              <NavSearch>
-                <CSSTransition
-                  in={focused}
-                  timeout={200}
-                  classNames="slide"
-                >
-                  <SearchWrapper className={focused ? 'focused' : ''}>
-                    <SearchInput
-                      onFocus={() => handleInputFocus(searchResultList)}
-                      onBlur={handleInputBlur}
-                    />
-                    <span className={focused ? 'iconfont focused' : 'iconfont'}>&#xe64d;</span>
-                  </SearchWrapper>
-                </CSSTransition>
+          <HeadWith>
+            <Link to='/'>
+              <Logo/>
+            </Link>
+            <NavContent>
+              <NavWrapper>
+                <NavItem className="orange">首页</NavItem>
+                <NavItem>下载APP</NavItem>
+                <NavSearch>
+                  <CSSTransition
+                    in={focused}
+                    timeout={200}
+                    classNames="slide"
+                  >
+                    <SearchWrapper className={focused ? 'focused' : ''}>
+                      <SearchInput
+                        onFocus={() => handleInputFocus(searchResultList)}
+                        onBlur={handleInputBlur}
+                      />
+                      <span className={focused ? 'iconfont focused' : 'iconfont'}>&#xe64d;</span>
+                    </SearchWrapper>
+                  </CSSTransition>
+                  {
+                    //搜索提示框
+                  }
+                  { this.getArea() }
+                </NavSearch>
+                <NavItem className="grey">
+                  <span className="iconfont">&#xe636;</span>
+                </NavItem>
                 {
-                  //搜索提示框
+                  isLogin ? <NavItem className="grey" onClick={logout}>退出</NavItem> : <Link to='/login'><NavItem className="grey">登录</NavItem></Link>
                 }
-                { this.getArea() }
-              </NavSearch>
-              <NavItem className="grey">
-                <span className="iconfont">&#xe636;</span>
-              </NavItem>
-              {
-                isLogin ? <NavItem className="grey" onClick={logout}>退出</NavItem> : <Link to='/login'><NavItem className="grey">登录</NavItem></Link>
-              }
-            </NavWrapper>
-          </NavContent>
-          <BtnWrapper>
-            <Btn>注册</Btn>
-            <Btn className="on"><span className="iconfont">&#xe617;</span>写文章</Btn>
-          </BtnWrapper>
+              </NavWrapper>
+            </NavContent>
+            <BtnWrapper>
+              <Btn>注册</Btn>
+              <Btn className="on"><span className="iconfont">&#xe617;</span>写文章</Btn>
+            </BtnWrapper>
+          </HeadWith>
         </HeadWrapper>
       </Fragment>
     )

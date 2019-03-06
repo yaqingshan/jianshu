@@ -10,6 +10,10 @@ export const HeadWrapper = styled.div`
   height: 56px;
   background: #ffffff;
   border-bottom: 1px solid #f0f0f0;
+`
+export const HeadWith = styled.div`
+  max-width:1400px;
+  margin: 0 auto;
   display: flex;
   align-items: center
 `
@@ -150,7 +154,6 @@ export const Btn = styled.div`
   color: #ea6f5a;
   font-size: 14px;
   height: 38px;
-  font-weight: 700;
   line-height: 38px;
   border-radius: 20px;
   border: 1px solid #ea6f5a;
