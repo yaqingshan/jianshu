@@ -1,4 +1,5 @@
-##效果图
+## 效果图
+
  ![image](https://github.com/yaqingshan/jianshu/blob/master/jianshu.gif)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
